@@ -23,6 +23,8 @@ public class ParkingService {
         var firstEmptySlot = findFirstEmptySlot(vehicle.getType(), parkingLot);
         if (firstEmptySlot.isEmpty())
             throw new RuntimeException("No empty slots available for type: " + vehicle.getType());
+        System.out.println("empty slot found on floor: " + firstEmptySlot.get().getFloorId() +
+                " for vehicle id: " + vehicle.getRegistrationNumber());
         int floorId = firstEmptySlot.get().getFloorId();
         var floor = parkingLot.getParkingFloors().get(floorId);
         floor.bookEmptySlot(vehicle.getType(), firstEmptySlot.get());
